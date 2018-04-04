@@ -5,7 +5,9 @@ import com.example.telegrambot.binance.BinanceApiClientFactory;
 import com.example.telegrambot.binance.BinanceApiRestClient;
 import com.example.telegrambot.binance.domain.general.Symbol;
 
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 class Binance{
 
@@ -19,4 +21,14 @@ class Binance{
     List<Symbol> getSymbolListBinance() {
         return symbolList;
     }
+
+    Set<String> getSymbolSetBinance() {
+        Set<String> symbolSet = new LinkedHashSet<>();
+        for (Symbol s : symbolList) {
+            symbolSet.add(s.getBaseAsset());
+        }
+        return symbolSet;
+    }
+
+
 }

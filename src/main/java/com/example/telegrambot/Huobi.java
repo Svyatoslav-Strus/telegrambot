@@ -4,7 +4,9 @@ import com.example.telegrambot.huobi.api.ApiClient;
 import com.example.telegrambot.huobi.api.ApiException;
 import com.example.telegrambot.huobi.response.Symbol;
 
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Huobi {
 
@@ -17,6 +19,14 @@ public class Huobi {
 
     List<Symbol> getSymbolListHuobi() {
         return symbolList;
+    }
+
+    Set<String> getSymbolSetHuobi() {
+        Set<String> symbolSet = new LinkedHashSet<>();
+        for (Symbol s : symbolList) {
+            symbolSet.add(s.baseCurrency);
+        }
+        return symbolSet;
     }
 
 }
